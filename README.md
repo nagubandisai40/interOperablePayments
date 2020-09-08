@@ -11,9 +11,9 @@
 
 Clone the repo into fabric-samples directory of hyperledgerfabric-2.0, Run the following commands for removing already existing volumes and stopping the running docker containers.
 
-`docker stop $(docker ps -aq)`__
-`docker rm $(docker ps -aq)`__
-`docker volume prune`__
+`docker stop $(docker ps -aq)`  
+`docker rm $(docker ps -aq)`  
+`docker volume prune`  
 
 ## 2. Bringing up the network
 
