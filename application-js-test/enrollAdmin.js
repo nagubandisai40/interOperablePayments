@@ -62,7 +62,7 @@ async function enrollAdminUser() {
     }
 }
 
-// enrollAdminUser()
+enrollAdminUser()
 
 exports.AdminUserId = adminUserId;
 exports.EnrollAdminUser = enrollAdminUser;
