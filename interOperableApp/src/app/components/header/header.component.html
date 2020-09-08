@@ -1,0 +1,22 @@
+  <header id="header" class="fixed-top" style="background-color:#37517e">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo mr-auto"><a style="cursor: pointer;text-decoration:none;" routerLink="/">InterOperable Payments</a></h1>
+      <nav class="nav-menu d-none d-lg-block">
+        <ul *ngIf="!LoggedIn">
+          <li><a routerLinkActive="active"  routerLink="home">Home</a></li>
+          <!-- <li><a href="#about">About</a></li> -->
+          <!-- <li><a href="#portfolio">Portfolio</a></li> -->
+          <!-- <li><a href="#team">Team</a></li> -->
+          <li><a routerLink="login" routerLinkActive="active">Login</a></li>
+        </ul>
+        <ul *ngIf="LoggedIn">
+          <li><a routerLink="dashboard" routerLinkActive="active">Dashboard</a></li>
+          <li><a routerLink="login" routerLinkActive="active" (click)="logout()" *ngIf="LoggedIn">Logout</a></li>
+        </ul>
+
+      </nav><!-- .nav-menu -->
+
+      <a routerLink="register" *ngIf="!LoggedIn" routerLinkActive="active" class="get-started-btn scrollto">Register</a>
+
+    </div>
+  </header><!-- End Header -->

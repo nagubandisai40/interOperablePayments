@@ -1,0 +1,52 @@
+<ngx-spinner></ngx-spinner>
+<main id="main" class="py-5">
+    <div class="container py-5">
+        <h2>Welcome {{displayName}}</h2>
+        <hr>
+        <div class="row">
+            <form>
+                <div class="form-group has-search">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" [(ngModel)]="searchStr" name="searchStr" class="form-control" placeholder="Search By Category">
+                </div>
+            </form>
+
+            <div class="form-group ml-auto">
+
+                <a type="button" class="btn"  routerLink="add" style="background:#dee1ec"><i class="fa fa-plus"
+                        aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add Asset</a>
+            </div>
+        </div>
+        
+        <div class="row mt-1">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No</th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Issuer Name</th>
+                            <th scope="col">Owner</th>
+                            <th scope="col">Value</th>
+                            <th scope="col">State</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let asset of assets|search:searchStr;index as i">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{asset.ID}}</td>
+                            <td>{{asset.issuerName}}</td>
+                            <td>{{asset.owner}}</td>
+                            <td>{{asset.value}}</td>
+                            <td>{{asset.state}}</td>
+                            <td>{{asset.category}}</td>
+                            <td><button [ngClass]="{disabled: asset.owner == userName}" (click)="buyAsset(asset)" type="button" class="btn btn-success">Buy</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>

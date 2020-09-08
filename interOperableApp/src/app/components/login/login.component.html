@@ -1,0 +1,74 @@
+<!-- <section id="hero1" class="d-flex align-items-center">
+    <div class="container mt-2">
+        <form class="signUp">
+            <h3>Create Your Account</h3>
+            <p>Just enter your email address<br>
+    and your password for join.
+            </p>
+            <input class="w100" type="email" [(ngModel)]="email" name="email" placeholder="Insert eMail" reqired autocomplete='off' />
+            <input type="password" [(ngModel)]="password" name="password" placeholder="Insert Password" reqired />
+            <input type="password" [(ngModel)]="Rpassword" name="Rpassword" placeholder="Verify Password" reqired />
+            <button class="form-btn sx log-in" type="button">Log In</button>
+            <button class="form-btn dx" (click)="singnUp()" >Sign Up</button>
+        </form>
+        <form class="signIn">
+            <h3>Welcome<br>Back !</h3>
+            <button class="fb" type="button">Log In With Facebook</button>
+            <p>- or -</p>
+            <input type="email" [(ngModel)]="email"placeholder="Insert eMail" name="email" autocomplete='off' reqired />
+            <input type="password" [(ngModel)]="password" name="password" placeholder="Insert Password" reqired />
+            <button class="form-btn sx back" type="button">Back</button>
+            <button class="form-btn dx" (click)="login()">Log In</button>
+        </form>
+    </div>
+</section> -->
+<ngx-spinner></ngx-spinner>
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                data-aos="fade-up" data-aos-delay="200">
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                        <h3 class="card-title">Login</h3>
+                        <hr>
+                        <form #log="ngForm" (ngSubmit)="login(log)">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input #email="ngModel" name="email" ngModel required type="email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
+                                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                    anyone else.</small> -->
+                                    <div *ngIf="email.touched && email.invalid">
+                                        <p class="text-danger">Email cannot be empty</p>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input #pass="ngModel" name="password" required minlength="6" ngModel type="password" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Password">
+                                    <div *ngIf="pass.invalid && pass.touched">
+                                        <p *ngIf="pass.errors.required" class="text-danger">Password cannot be empty</p>
+                                        <p *ngIf="pass.errors.minlength" class="text-danger">Password must contain atleast 6 letters</p>
+                                    </div>
+                            </div>          
+                            <!-- <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div> -->
+                            <!-- <br> -->
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        </form>
+                        <div class="row mt-2">
+                        <h6 class="m-auto">Don't have an account? <a routerLink="/register">Register here</a> </h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <img src="assets/img/undraw_Security_on_ff2u.svg" class="img-fluid animated" alt="">
+            </div>
+        </div>
+    </div>
+</section>

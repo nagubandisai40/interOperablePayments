@@ -1,0 +1,45 @@
+<ngx-spinner></ngx-spinner>
+<main class="py-4 d-flex align-items-center">
+    <div class="container py-5">
+        <div class="row py-3 justify-content-center">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Adding Asset Form</h3>
+                </div>
+                <div class="card-body">
+                    <form #formInstance="ngForm" (ngSubmit)="addAsset(formInstance)">
+                        <div class="form-group">
+                            <label for="issuerName">Issuer Name</label>
+                            <input #name="ngModel" required type="text" class="form-control" id="issuerName"
+                                aria-describedby="issuerName" ngModel name="issuerName" placeholder="Enter Name">
+                            <div *ngIf="name.invalid && name.touched">
+                                <p class="text-danger">This field cannot be empty</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="val">Value</label>
+                            <input required #val="ngModel" type="text" class="form-control" name="amount" ngModel id="val"
+                                placeholder="Value">
+                            <div *ngIf="val.invalid && val.touched">
+                                <p class="text-danger">This field cannot be empty</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cat">Category</label>
+                        <div class="input-group ">
+                            <select class="custom-select" ngModel name="cat" id="inputGroupSelect01">
+                              <option value="Furniture" selected>Furniture</option>
+                              <option value="Machine">Machine</option>
+                              <option value="Other">Other</option>
+                              <!-- <option value="3">Three</option> -->
+                            </select>
+                          </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-block btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,85 @@
+<ngx-spinner></ngx-spinner>
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 hero-img" data-aos="zoom-in" data-aos-delay="200">
+                <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2  d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                data-aos="fade-up" data-aos-delay="200">
+                <div class="row justify-content-center ml-3">
+                    <div class="card" style="width: 30rem;">
+                        <div class="card-body">
+                            <h3 class="card-title">Register</h3>
+                            <hr>
+                            <form #registe="ngForm" (ngSubmit)="register(registe)">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input #email="ngModel" required type="email" name="email" class="form-control"
+                                        id="exampleInputEmail1" aria-describedby="emailHelp" ngModel
+                                        placeholder="Enter email">
+                                    <div *ngIf="email.touched && email.invalid" class="text-danger">
+                                        <p *ngIf="email.errors.required">Email can't be empty</p>
+                                    </div>
+                                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                        anyone else.</small> -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input #pass="ngModel" required name="pass" minlength="6" type="password"
+                                        class="form-control" ngModel id="exampleInputPassword1" placeholder="Password">
+                                    <div *ngIf="pass.invalid && pass.touched">
+                                        <p *ngIf="pass.errors.required" class="text-danger">Password cannot be empty!
+                                        </p>
+                                        <p class="text-danger" *ngIf="pass.errors.minlength">Password must contain
+                                            atleast 6 characters
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="repeatPassword1">Confirm Password</label>
+                                    <input #rpass="ngModel" required minlength="6" register type="password" name="rpass"
+                                        class="form-control" ngModel id="repeatPassword1"
+                                        placeholder="Confirm Password">
+                                    <div *ngIf="rpass.touched && rpass.invalid">
+                                        <p class="text-danger" *ngIf="rpass.errors.required">Confirm password cannot be
+                                            empty</p>
+                                        <p class="text-danger" *ngIf="rpass.errors.minlength">Confirm password must
+                                            contain atleast 6 characters</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="rippleId">Ripple Address</label>
+                                    <input #rippleId="ngModel" required  type="text" name="rippleId"
+                                        class="form-control" ngModel id="rippleId"
+                                        placeholder="Ripple Address">
+                                    <div *ngIf="rippleId.touched && rippleId.invalid">
+                                        <p class="text-danger" *ngIf="rippleId.errors.required">This field cannot be
+                                            empty</p>
+                                        <!-- <p class="text-danger" *ngIf="rpass.errors.minlength">Confirm password must
+                                            contain atleast 6 characters</p> -->
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                </div> -->
+                                
+                                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            </form>
+
+                            <div class="row mt-2">
+                                <h6 class="m-auto">Already Registered? <a routerLink="/login">Login here</a>
+                                </h6>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
