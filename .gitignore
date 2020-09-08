@@ -1,0 +1,67 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+./interOperableApp/dist
+./interOperableApp/tmp
+./interOperableApp/out-tsc
+# Only exists if Bazel was run
+./interOperableApp/bazel-out
+
+# dependencies
+./interOperableApp/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+./interOperableApp/.idea
+./interOperableApp/.project
+./interOperableApp/.classpath
+./interOperableApp/.c9/
+./interOperableApp/*.launch
+./interOperableApp/.settings/
+./interOperableApp/*.sublime-workspace
+
+# IDE - VSCode
+./interOperableApp/.vscode/*
+./interOperableApp/!.vscode/settings.json
+./interOperableApp/!.vscode/tasks.json
+./interOperableApp/!.vscode/launch.json
+./interOperableApp/!.vscode/extensions.json
+./interOperableApp/.history/*
+
+# misc
+./interOperableApp/.sass-cache
+./interOperableApp/connect.lock
+./interOperableApp/coverage
+./interOperableApp/libpeerconnection.log
+./interOperableApp/npm-debug.log
+./interOperableApp/yarn-error.log
+./interOperableApp/testem.log
+./interOperableApp/typings
+
+# System Files
+./interOperableApp/.DS_Store
+./interOperableApp/Thumbs.db
+
+#for express
+./application-js-test/node_modules
+./application-js-test/changesrequired.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
