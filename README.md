@@ -11,9 +11,9 @@
 
 Clone the repo into fabric-samples directory of hyperledgerfabric-2.0, Run the following commands for removing already existing volumes and stopping the running docker containers.
 
-`docker stop $(docker ps -aq)`
-`docker rm $(docker ps -aq)`
-`docker volume prune`
+`docker stop $(docker ps -aq)`__
+`docker rm $(docker ps -aq)`__
+`docker volume prune`__
 
 ## 2. Bringing up the network
 
@@ -21,19 +21,19 @@ navigate to test-network1 by using `cd test-network1`
 
 Run the **network.sh** script by `./network.sh up createChannel -c mychannel -ca` by running this channel named mychannel is created. We can verify by using `docker ps -a` which shows all the containers running.
 
-## Installing the chaincode
+## 3. Installing the chaincode
 
 Run **deployChaincode.sh** by `./deployChaincode.sh`
 
-## Enrolling Admin User
+## 4. Enrolling Admin User
 
 Navigate to application-js-test directory and enroll the admin by running **enrollAdmin.js** by `node enrollAdmin.js` you can verify this by checking the presence of admin.id in wallet folder.
 
-## Running Express Server
+## 5. Running Express Server
 
 Up the express server by running `node server.js` before running this make sure that you have installed all the dependencies required to up the express server.
 
-## Running Angular Application
+## 6. Running Angular Application
 
 Follow the **README.md** file of angular app (interOperableApp) to run the angular application.
 
