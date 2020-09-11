@@ -1,41 +1,69 @@
-# Steps for Quick installation
+# Interoperable Payments System 
+This System can be used to transfer assets between different organizations without any external medium involvement in a **Private**,**Decentralized**, **Trusted** and **Highly-Secure Blockchain Network**.
 
-1.  Cloning the repo and housekeeping
-2.  Bringing up the network
-3.  Installing Chaincode
-4.  Enrolling Admin User
-5.  Running Express Server
-6.  Running Angular Application
+## TechStack
+* [Hyperledger-Fabric v2.2](https://hyperledger-fabric.readthedocs.io/en/release-2.2/ "Hyperledger-Fabric v2.2 documentation page")
+* [NodeJS](https://nodejs.org/ "NodeJS Homepage")
+* [NodeJS Contact API](https://github.com/hyperledger/fabric-chaincode-node "NodeJS Contract API")
+* [Angular](https://angular.io/docs "Angular Documentation")
 
-## 1. Cloning the repo and housekeeping
+## Steps to bring up the application
 
-Clone the repo into fabric-samples directory of hyperledgerfabric-2.0, Run the following commands for removing already existing volumes and stopping the running docker containers.
+1.  Installing the prerequisites
+2.  Cloning the repo and housekeeping
+3.  Bringing up the network
+4.  Installing Chaincode
+5.  Enrolling Admin User
+6.  Running Express Server
+7.  Running Angular Application
 
-`docker stop $(docker ps -aq)`  
-`docker rm $(docker ps -aq)`  
-`docker volume prune`  
 
-## 2. Bringing up the network
+## 1. Installing the prerequisites
 
-navigate to test-network1 by using `cd test-network1`
+*(Skip this step and go to step 2 if NodeJS and Hyperledger-2.2 are already installed in your system)*
+### Steps to install NodeJS
+We need to install NodeJS in order to run the server.
+Follow this page to [download and install NodeJS.](https://nodejs.org/en/download/)
 
-Run the **network.sh** script by `./network.sh up createChannel -c mychannel -ca` by running this channel named mychannel is created. We can verify by using `docker ps -a` which shows all the containers running.
+### Steps to install Hyperledger-Fabric 2.2
+We need to Setup the Hyperledger-Fabric Network prerequisites and clone the hyperledger fabric network before we proceed.
+Follow the official documentation to set up the [Hyperledger-Fabric Prerequisites](https://hyperledger-fabric.readthedocs.io/en/release-2.2/prereqs.html "Hyperledger-Fabric Prerequisites") and [Clone the Samples.](https://hyperledger-fabric.readthedocs.io/en/release-2.2/install.html "Install Samples, Binaries, and Docker Images")
 
-## 3. Installing the chaincode
 
-Run **deployChaincode.sh** by `./deployChaincode.sh`
+## 2. Cloning the repo and housekeeping
 
-## 4. Enrolling Admin User
+Now clone this repo into **fabric-samples** directory [`hyperledger/fabric-samples`](https://github.com/hyperledger/fabric-samples)  (*which was previously cloned while seting up the hyperledger-fabric in step 1*).
 
-Navigate to application-js-test directory and enroll the admin by running **enrollAdmin.js** by `node enrollAdmin.js` you can verify this by checking the presence of admin.id in wallet folder.
+Check and Remove any running docker containers.
+Run the following commands for removing already existing docker volumes and stopping any running docker containers.
 
-## 5. Running Express Server
+*Note: the below commands will stop and remove all the runnning containers and all the docker volumes whhich are present while exectuting the below code* <br />
+`$ docker ps -a`  
+`$ docker stop $(docker ps -aq)`  
+`$ docker rm $(docker ps -aq)`  
+`$ docker volume prune`  
 
-Up the express server by running `node server.js` before running this make sure that you have installed all the dependencies required to up the express server.
+## 3. Bringing up the network
+Navigate inside the test-network1 directory using `$ cd test-network1`
 
-## 6. Running Angular Application
+Run the [**network.sh**](/test-network1/network.sh) script using `$ ./network.sh up createChannel -c mychannel -ca` after this command is executed all the docker container are up and a channel named mychannel is created. We can verify by using `$ docker ps -a` which shows all the containers running.
 
-Follow the **README.md** file of angular app (interOperableApp) to run the angular application.
+## 4. Installing the chaincode
+
+Run [ **deployChaincode.sh** ](/test-network1/deployChaincode.sh) by `$ ./deployChaincode.sh`
+
+## 5. Enrolling Admin User
+
+Navigate to [**application-js-test**](/application-js-test) directory and, Install all the required dependencies by executing `$ npm i`
+
+Now, We need to enroll the admin by exectuting the [**enrollAdmin.js**](/application-js-test/enrollAdmin.js) file by using `$ node enrollAdmin.js`. We can verify if the enrollment is successfull or not by checking the presence of **admin.id** in wallet directory.
+
+## 6. Running Express Server
+Bring Up the express server by running `$ node server.js`.
+
+## 7. Running Angular Application
+Navigate to interOperableApp(/interOperableApp) and Follow the [**README.md**](/interOperableApp/README.md) file of angular app to run the angular application.
+
 
 
 

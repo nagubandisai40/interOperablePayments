@@ -45,6 +45,11 @@ async function transferTokens(senderAddr, rcvrAddr, secrete, value) {
         });
     })
     .catch(console.error);
+    
+  console.log("############################");
+    console.log(mm);
+
+  console.log("############################");
     return mm;
 }
 

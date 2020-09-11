@@ -1,38 +1,71 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class CorefunctionsService {
+  url = "http://localhost:3000/";
+  constructor(private http: HttpClient) {}
 
-  url="http://localhost:3000/"
-  constructor(private http:HttpClient) { }
-
-  getAllAssets(userName)
-  {
-    return this.http.get(this.url+'allAssets',{headers:{'userName':userName}})
+  getAllAssets(userName) {
+    return this.http.get(this.url + "allAssets", {
+      headers: { userName: userName },
+    });
   }
 
-
-  createAsset(userName,id,issuerId,issuerName,owner,value,cat,assetName)
-  {
-    return this.http.post(this.url+'createAsset',{userName:userName,id:id,issueId:issuerId,issueName:issuerName,owner:owner,value:value,cat:cat,assetName:assetName})
+  createAsset(
+    userName,
+    id,
+    issuerId,
+    issuerName,
+    owner,
+    value,
+    cat,
+    assetName
+  ) {
+    return this.http.post(this.url + "createAsset", {
+      userName: userName,
+      id: id,
+      issueId: issuerId,
+      issueName: issuerName,
+      owner: owner,
+      value: value,
+      cat: cat,
+      assetName: assetName,
+    });
   }
 
-  transferAsset(userName,id,owner,senderAddr,rcvrAddr,secrete,value)
-  {
-    return this.http.post(this.url+'transferAsset',{userName:userName,id:id,owner:owner,senderAddr:senderAddr,rcvrAddr:rcvrAddr,scrt:secrete,value:value})
+  transferAsset(userName, id, owner, senderAddr, rcvrAddr, secrete, value) {
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    console.log({
+      userName: userName,
+      id: id,
+      owner: owner,
+      senderAddr: senderAddr,
+      rcvrAddr: rcvrAddr,
+      scrt: secrete,
+      value: value,
+    });
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    return this.http.post(this.url + "balanceTransfer", {
+      userName: userName,
+      id: id,
+      owner: owner,
+      senderId: senderAddr,
+      rcvrId: rcvrAddr,
+      scrt: secrete,
+      value: value.toString(),
+    });
   }
 
-  getOwnerId(ownerId)
-  {
-    return this.http.get(this.url+'ownerRippleId',{headers:{'owner':ownerId}})
+  getOwnerId(ownerId) {
+    return this.http.get(this.url + "ownerRippleId", {
+      headers: { owner: ownerId },
+    });
   }
 
-  checkBalance(rippleId){
-    return this.http.post(this.url+"test_view",{'rippleId':rippleId})
+  checkBalance(rippleId) {
+    return this.http.post(this.url + "test_view", { rippleId: rippleId });
   }
-
-
 }
