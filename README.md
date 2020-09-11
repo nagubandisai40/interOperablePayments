@@ -1,4 +1,4 @@
-# Steps for Quik installation
+# Steps for Quick installation
 
 1.  Cloning the repo and housekeeping
 2.  Bringing up the network
