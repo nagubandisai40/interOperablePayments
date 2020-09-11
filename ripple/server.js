@@ -36,13 +36,18 @@ app.post("/transfer", (req, res) => {
     .then((response) => {
       console.log("---3---");
       console.log(response);
-      res.send({ message: response });
+      res.send(response);
     })
     .catch((err) => {
       console.log("---4---");
       console.log(err);
       res.send({ message: err });
     });
+  // console.log("############################");
+  // console.log(senderAddr, rcvrId, scrt, value);
+
+  // console.log("############################");
+  // res.send("Completed_Ripple");
 });
 
 app.listen(5000, () => {
