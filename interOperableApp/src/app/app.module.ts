@@ -15,6 +15,7 @@ import { ServicesComponent } from './components/services/services.component';
 import { AddAssetComponent } from './components/add-asset/add-asset.component';
 import { SearchPipe } from './pipes/search.pipe';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import { PayFromComponent } from './components/pay-from/pay-from.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     RegisterComponent,
     ServicesComponent,
     AddAssetComponent,
-    SearchPipe
+    SearchPipe,
+    PayFromComponent
   ],
   imports: [
     BrowserModule,

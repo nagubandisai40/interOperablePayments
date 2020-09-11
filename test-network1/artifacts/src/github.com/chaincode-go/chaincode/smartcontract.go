@@ -15,43 +15,47 @@ type SmartContract struct {
 
 // Asset describes basic details of what makes up a simple asset
 type Asset struct {
-	ID         string `json:"ID"`
-	Issuerid   string `json:"issuerid"`
-	IssuerName string `json:"issuerName"`
-	Owner      string `json:"owner"`
-	// Issuedate  time.Time `json:"issuedate"`
-	Value    int    `json:"value"`
-	State    string `json:"state"`
-	Category string `json:"category"`
+	ID          string `json:"ID"`
+	Issuerid    string `json:"issuerid"`
+	IssuerName  string `json:"issuerName"`
+	Owner       string `json:"owner"`
+	Value       int    `json:"value"`
+	State       string `json:"state"`
+	Category    string `json:"category"`
+	AssetName   string `json:"assetName"`
+	Account     string `json:"account"`
+	Amount      string `json:"amount"`
+	Destination string `json:"destination"`
+	Hash        string `json:"hash"`
 }
 
 // InitLedger adds a base set of assets to the ledger
-func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
-	assets := []Asset{
-		{ID: "asset1", Issuerid: "Axis7051", IssuerName: "Axis", Owner: "Axis", Value: 500, State: "Issued", Category: "Machines"},
-		{ID: "asset2", Issuerid: "Hdfc8051", IssuerName: "Hdfc", Owner: "Hdfc", Value: 3300, State: "Issued", Category: "Machines"},
-		{ID: "asset3", Issuerid: "Axis7051", IssuerName: "Axis", Owner: "Axis", Value: 300, State: "Issued", Category: "Machines"},
-		{ID: "asset4", Issuerid: "Bofs9051", IssuerName: "Bofs", Owner: "Bofs", Value: 800, State: "Issued", Category: "Furniture"},
-		{ID: "asset5", Issuerid: "Hdfc8051", IssuerName: "Hdfc", Owner: "Hdfc", Value: 900, State: "Issued", Category: "Furniture"},
-	}
+// func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
+// 	assets := []Asset{
+// 		{ID: "asset1", Issuerid: "Axis7051", IssuerName: "Axis", Owner: "Axis", Value: 500, State: "Issued", Category: "Machines"},
+// 		{ID: "asset2", Issuerid: "Hdfc8051", IssuerName: "Hdfc", Owner: "Hdfc", Value: 3300, State: "Issued", Category: "Machines"},
+// 		{ID: "asset3", Issuerid: "Axis7051", IssuerName: "Axis", Owner: "Axis", Value: 300, State: "Issued", Category: "Machines"},
+// 		{ID: "asset4", Issuerid: "Bofs9051", IssuerName: "Bofs", Owner: "Bofs", Value: 800, State: "Issued", Category: "Furniture"},
+// 		{ID: "asset5", Issuerid: "Hdfc8051", IssuerName: "Hdfc", Owner: "Hdfc", Value: 900, State: "Issued", Category: "Furniture"},
+// 	}
 
-	for _, asset := range assets {
-		assetJSON, err := json.Marshal(asset)
-		if err != nil {
-			return err
-		}
+// 	for _, asset := range assets {
+// 		assetJSON, err := json.Marshal(asset)
+// 		if err != nil {
+// 			return err
+// 		}
 
-		err = ctx.GetStub().PutState(asset.ID, assetJSON)
-		if err != nil {
-			return fmt.Errorf("failed to put to world state. %v", err)
-		}
-	}
+// 		err = ctx.GetStub().PutState(asset.ID, assetJSON)
+// 		if err != nil {
+// 			return fmt.Errorf("failed to put to world state. %v", err)
+// 		}
+// 	}
 
-	return nil
-}
+// 	return nil
+// }
 
 // CreateAsset issues a new asset to the world state with given details.
-func (s *SmartContract) CreateAsset(ctx contractapi.TransactionContextInterface, id string, issueId string, issueName string, owner string, appraisedValue int, cat string) error {
+func (s *SmartContract) CreateAsset(ctx contractapi.TransactionContextInterface, id string, issueID string, issueName string, owner string, appraisedValue int, cat string, assetName string) error {
 	exists, err := s.AssetExists(ctx, id)
 	if err != nil {
 		return err
@@ -61,13 +65,18 @@ func (s *SmartContract) CreateAsset(ctx contractapi.TransactionContextInterface,
 	}
 
 	asset := Asset{
-		ID:         id,
-		Issuerid:   issueId,
-		IssuerName: issueName,
-		Owner:      owner,
-		Value:      appraisedValue,
-		State:      "Issued",
-		Category:   cat,
+		ID:          id,
+		Issuerid:    issueID,
+		IssuerName:  issueName,
+		Owner:       owner,
+		Value:       appraisedValue,
+		State:       "Issued",
+		Category:    cat,
+		AssetName:   assetName,
+		Account:     "",
+		Amount:      "",
+		Destination: "",
+		Hash:        "",
 	}
 
 	assetJSON, err := json.Marshal(asset)
@@ -108,13 +117,18 @@ func (s *SmartContract) AssetExists(ctx contractapi.TransactionContextInterface,
 }
 
 // TransferAsset updates the owner field of asset with given id in world state.
-func (s *SmartContract) TransferAsset(ctx contractapi.TransactionContextInterface, id string, newOwner string) error {
+func (s *SmartContract) TransferAsset(ctx contractapi.TransactionContextInterface, id string, newOwner string, amount string, account string, destination string, hash string) error {
 	asset, err := s.ReadAsset(ctx, id)
 	if err != nil {
 		return err
 	}
 
 	asset.Owner = newOwner
+	asset.Amount = amount
+	asset.Account = account
+	asset.Destination = destination
+	asset.Hash = hash
+
 	assetJSON, err := json.Marshal(asset)
 	if err != nil {
 		return err

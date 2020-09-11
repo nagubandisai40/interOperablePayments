@@ -156,7 +156,7 @@ async function getAssetByCat(userName,catName){
 }
 
 
-async function createAsset(userName,id,issuerId,issueName,owner,value,cat){
+async function createAsset(userName,id,issuerId,issueName,owner,value,cat,assetName){
     try {
         // load the network configuration
 
@@ -189,7 +189,7 @@ async function createAsset(userName,id,issuerId,issueName,owner,value,cat){
         // Evaluate the specified transaction.
         // queryCar transaction - requires 1 argument, ex: ('queryCar', 'CAR4')
         // queryAllCars transaction - requires no arguments, ex: ('queryAllCars')
-        const result = await contract.submitTransaction('CreateAsset',id,issuerId,issueName,owner,value,cat);
+        const result = await contract.submitTransaction('CreateAsset',id,issuerId,issueName,owner,value,cat,assetName);
         // console.log(`Transaction has been evaluated, result is: ${result}`);
 
         

@@ -1,23 +1,28 @@
 <ngx-spinner></ngx-spinner>
 <main id="main" class="py-5">
     <div class="container py-5">
-        <h2>Welcome {{displayName}}</h2>
+        <div class="row">
+        <h2 class="mr-auto">Welcome {{displayName}}</h2>
+        <button type="button" class="btn btn-danger ml-auto" (click)="getBalance()">Check Ripple Balance</button>
+        </div>
+
         <hr>
         <div class="row">
             <form>
                 <div class="form-group has-search">
                     <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" [(ngModel)]="searchStr" name="searchStr" class="form-control" placeholder="Search By Category">
+                    <input type="text" [(ngModel)]="searchStr" name="searchStr" class="form-control"
+                        placeholder="Search By Category">
                 </div>
             </form>
 
             <div class="form-group ml-auto">
 
-                <a type="button" class="btn"  routerLink="add" style="background:#dee1ec"><i class="fa fa-plus"
+                <a type="button" class="btn" routerLink="add" style="background:#dee1ec"><i class="fa fa-plus"
                         aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Add Asset</a>
             </div>
         </div>
-        
+
         <div class="row mt-1">
             <div class="table-responsive">
                 <table class="table">
@@ -42,7 +47,8 @@
                             <td>{{asset.value}}</td>
                             <td>{{asset.state}}</td>
                             <td>{{asset.category}}</td>
-                            <td><button [ngClass]="{disabled: asset.owner == userName}" (click)="buyAsset(asset)" type="button" class="btn btn-success">Buy</button></td>
+                            <td><button [ngClass]="{disabled: asset.owner == userName}" (click)="buyAsset(asset)"
+                                    type="button" class="btn btn-success">Buy</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -50,3 +56,71 @@
         </div>
     </div>
 </main>
+
+<button type="button" id="modal_btn" hidden class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+  </button>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h3><b>Balance:</b>&nbsp;&nbsp;{{balance.xrpBalance}}</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+          <!-- <button type="button" class="btn btn-primary"></button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+</button>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="container">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Receiver's RippleId</label>
+                            <input type="email" readonly class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Sender Ripple Id">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="senderAddr">Your RippleId</label>
+                            <input type="text" class="form-control" id="senderAddr"
+                                aria-describedby="senderAddr" placeholder="Enter Ripple Address">
+                        </div>
+                        <div class="form-group">
+                            <label for="Secret">Secret</label>
+                            <input type="password" class="form-control" id="Secret" placeholder="Secret">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success">Pay</button>
+            </div>
+        </div>
+    </div>
+</div> -->

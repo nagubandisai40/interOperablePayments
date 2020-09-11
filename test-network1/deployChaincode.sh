@@ -250,7 +250,7 @@ chaincodeInvoke() {
     --peerAddresses localhost:7051 --tlsRootCertFiles $PEER0_ORG1_CA \
     --peerAddresses localhost:8051 --tlsRootCertFiles $PEER0_ORG2_CA \
     --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG3_CA \
-    -c '{"function":"CreateAsset","Args":["asset1","Bofs9051","saikumar","Bofs","700","Furniture"]}' >&log.txt
+    -c '{"function":"CreateAsset","Args":["asset1","Bofs9051","saikumar","Bofs","700","Furniture","assetName"]}' >&log.txt
 
 
     # setGlobalsForPeer0Org1
@@ -334,7 +334,6 @@ stopChannel(){
 
 # Run this function if you add any new dependency in chaincode
 presetup
-
 packageChaincode
 installChaincode
 queryInstalled

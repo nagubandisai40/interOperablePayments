@@ -16,6 +16,7 @@
     "author": "Hyperledger",
     "license": "Apache-2.0",
     "dependencies": {
+        "axios": "^0.20.0",
         "bcrypt": "^5.0.0",
         "body-parser": "^1.19.0",
         "cors": "^2.8.5",
@@ -24,6 +25,7 @@
         "express-jwt": "^6.0.0",
         "fabric-ca-client": "^2.1.0",
         "fabric-network": "^2.1.0",
+        "http": "0.0.1-security",
         "jsonwebtoken": "^8.5.1"
     },
     "devDependencies": {

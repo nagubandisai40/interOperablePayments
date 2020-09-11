@@ -1,0 +1,47 @@
+<ngx-spinner></ngx-spinner>
+<main class="py-4 d-flex align-items-center">
+    <div class="container py-5">
+        <div class="row py-3 justify-content-center">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Payment Info</h2>
+                </div>
+                <div class="card-body">
+                    <form #payForm="ngForm" (ngSubmit)="payClick(payForm)">
+                        <div class="container">
+                            <div class="form-group">
+                                <label for="value">Amount</label>
+                                <input type="text" name="amount" [(ngModel)]="amount" readonly
+                                    class="form-control" id="amount" aria-describedby="amount"
+                                    placeholder="Amount">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Receiver's RippleId</label>
+                                <input type="rcvrAddr" name="rcvrAddr" [(ngModel)]="rcvrAddr" readonly
+                                    class="form-control" id="rcvrAddr" aria-describedby="rcvrAddr"
+                                    placeholder="Receiver Ripple Id">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="senderAddr">Your RippleId</label>
+                                <input type="text" name="senderAddr"
+                                    [(ngModel)]="senderAddr" class="form-control" id="senderAddr"
+                                    aria-describedby="senderAddr" placeholder="Enter Ripple Address">
+                            </div>
+                            <div class="form-group">
+                                <label for="Secret">Secret</label>
+                                <input ngModel #scrt="ngModel" required name="secret" type="password" class="form-control" id="Secret"
+                                    placeholder="Secret">
+                                <div *ngIf="scrt.invalid && scrt.touched">
+                                    <p class="text-danger">This field cannot be empty</p>
+                                </div>    
+                            </div>
+                            <button type="submit" class="btn btn-block btn-success p-2">Pay</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

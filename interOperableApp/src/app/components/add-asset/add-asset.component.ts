@@ -19,7 +19,8 @@ export class AddAssetComponent implements OnInit {
   addAsset(formInstance){
     var uid=uuid.v4();
     var name=JSON.parse(localStorage.getItem('access-token')).message['userName']
-    
+    console.log(formInstance);
+
     if(formInstance.form.status=="INVALID")
     {
       console.log("Invalid");
@@ -28,11 +29,12 @@ export class AddAssetComponent implements OnInit {
     var amount=formInstance.form.value.amount
     var cat=formInstance.form.value.cat
     var issuerName=formInstance.form.value.issuerName
+    var assetName=formInstance.form.value.assetName
     this.spinner.show();
-    this.coreService.createAsset(name,uid,name.split("@")[0],issuerName,name,parseInt(amount),cat).subscribe(res=>{
+    this.coreService.createAsset(name,uid,name.split("@")[0],issuerName,name,parseInt(amount),cat,assetName).subscribe(res=>{
       // console.log("Create Asset Response ",res)
       this.spinner.hide();
-      this.router.navigate(['/','services'])
+      this.router.navigate(['/','dashboard'])
     },err=>{
       this.spinner.hide();
       console.log("create Asset error ",err)
