@@ -6,7 +6,7 @@ This System can be used to transfer assets between different organizations witho
 * [NodeJS](https://nodejs.org/ "NodeJS Homepage")
 * [NodeJS Contact API](https://github.com/hyperledger/fabric-chaincode-node "NodeJS Contract API")
 * [Angular](https://angular.io/docs "Angular Documentation")
-
+* [XRP Ledger](https://xrpl.org/ "XRP Ledger Homepage")
 ## Steps to bring up the application
 
 1.  Installing the prerequisites
@@ -15,7 +15,8 @@ This System can be used to transfer assets between different organizations witho
 4.  Installing Chaincode
 5.  Enrolling Admin User
 6.  Running Express Server
-7.  Running Angular Application
+7.  Running the XRP Server
+8.  Running Angular Application
 
 
 ## 1. Installing the prerequisites
@@ -28,7 +29,6 @@ Follow this page to [download and install NodeJS.](https://nodejs.org/en/downloa
 ### Steps to install Hyperledger-Fabric 2.2
 We need to Setup the Hyperledger-Fabric Network prerequisites and clone the hyperledger fabric network before we proceed.
 Follow the official documentation to set up the [Hyperledger-Fabric Prerequisites](https://hyperledger-fabric.readthedocs.io/en/release-2.2/prereqs.html "Hyperledger-Fabric Prerequisites") and [Clone the Samples.](https://hyperledger-fabric.readthedocs.io/en/release-2.2/install.html "Install Samples, Binaries, and Docker Images")
-
 
 ## 2. Cloning the repo and housekeeping
 
@@ -61,7 +61,14 @@ Now, We need to enroll the admin by exectuting the [**enrollAdmin.js**](/applica
 ## 6. Running Express Server
 Bring Up the express server by running `$ node server.js`.
 
-## 7. Running Angular Application
+## 7. Running the XRP server
+Navigate to [ripple](/ripple) directory using `$ cd ripple`
+Bring up the XRP server by `$ node server.js`.
+
+### Note: Inorder to transfer tokens we will need to use a XRPL net credentials. For making a sample account go to [XRPL Testnet Credentials](https://xrpl.org/xrp-testnet-faucet.html) and click on **Generate Testnet credentials**
+
+
+## 8. Running Angular Application
 Navigate to interOperableApp(/interOperableApp) and Follow the [**README.md**](/interOperableApp/README.md) file of angular app to run the angular application.
 
 
