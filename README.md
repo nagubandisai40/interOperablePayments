@@ -65,7 +65,7 @@ Bring Up the express server by running `$ node server.js`.
 Navigate to [ripple](/ripple) directory using `$ cd ripple`
 Bring up the XRP server by `$ node server.js`.
 
-### Note: Inorder to transfer tokens we will need to use a XRPL net credentials. For making a sample account go to [XRPL Testnet Credentials](https://xrpl.org/xrp-testnet-faucet.html) and click on **Generate Testnet credentials**
+### Note: Inorder to transfer tokens we will need to use a XRPL net credentials. For making a sample account go to [XRPL Testnet Credentials](https://xrpl.org/xrp-testnet-faucet.html) and click on **Generate Testnet credentials**. Use these credentials while signing up your account in the angular app.
 
 
 ## 8. Running Angular Application
